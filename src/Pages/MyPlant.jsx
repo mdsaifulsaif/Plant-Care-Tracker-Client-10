@@ -10,10 +10,11 @@ import {
   FaEdit,
   FaTrash,
 } from "react-icons/fa";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData, useLocation } from "react-router";
 
 const MyPlant = () => {
   const plants = useLoaderData();
+  const { pathname } = useLocation();
   // const [plants, setPlants] = useState([]);
 
   const handleDelete = async (id) => {
@@ -25,10 +26,6 @@ const MyPlant = () => {
     //     console.error('Delete failed:', error);
     //   }
     // }
-  };
-
-  const handleUpdate = (plant) => {
-    alert(`Update feature for ${plant.plantName} goes here.`);
   };
 
   return (
@@ -94,16 +91,13 @@ const MyPlant = () => {
               </div>
 
               <div className="flex gap-4 mt-4">
-                <button
-                  onClick={() => handleUpdate(plant)}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-                >
-                  <FaEdit /> Update
-                </button>
-                <button
-                  onClick={() => handleDelete(plant._id)}
-                  className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
-                >
+                <Link state={pathname} to={`/update-plant/${plant._id}`}>
+                  <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                    <FaEdit /> Update
+                  </button>
+                </Link>
+
+                <button className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
                   <FaTrash /> Delete
                 </button>
               </div>
