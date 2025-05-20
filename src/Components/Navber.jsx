@@ -30,7 +30,12 @@ function Navber() {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/contact" className="hover:text-blue-600">
+        <NavLink to="/my-plant" className="hover:text-blue-600">
+          My Plants
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/login" className="hover:text-blue-600">
           Login
         </NavLink>
       </li>

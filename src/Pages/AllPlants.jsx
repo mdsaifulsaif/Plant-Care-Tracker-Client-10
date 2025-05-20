@@ -1,20 +1,52 @@
 import React from "react";
 import { FaLeaf } from "react-icons/fa";
-import { useLoaderData } from "react-router";
-import Plant from "../Components/Plant";
+import { Link, useLoaderData, useNavigate } from "react-router";
 
 function AllPlants() {
   const data = useLoaderData();
+  const navigate = useNavigate();
+
   return (
-    <section className="p-6 bg-green-50 rounded-2xl shadow-md">
-      <div className="flex items-center gap-2 mb-6">
+    <section className="p-4 sm:p-6 bg-green-50 rounded-2xl shadow-md">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 mb-6">
         <FaLeaf className="text-green-600 text-2xl" />
         <h2 className="text-2xl font-bold text-green-800">All Plants</h2>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {data.map((plant) => (
-          <Plant key={plant._id} plant={plant}></Plant>
-        ))}
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white rounded-xl shadow text-sm">
+          <thead>
+            <tr className="bg-green-100 text-left text-green-700">
+              <th className="px-4 py-3 whitespace-nowrap">Plant Name</th>
+              <th className="px-4 py-3 whitespace-nowrap">Category</th>
+              <th className="px-4 py-3 whitespace-nowrap">
+                Watering Frequency
+              </th>
+              <th className="px-4 py-3 whitespace-nowrap">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((plant) => (
+              <tr key={plant._id} className="border-t hover:bg-green-50">
+                <td className="px-4 py-3 font-medium text-green-900 whitespace-nowrap">
+                  {plant.plantName}
+                </td>
+                <td className="px-4 py-3 text-gray-700 whitespace-nowrap">
+                  {plant.category}
+                </td>
+                <td className="px-4 py-3 text-gray-700 whitespace-nowrap">
+                  {plant.wateringFrequency}
+                </td>
+                <td className="px-4 py-3 whitespace-nowrap">
+                  <Link to={`/plant/${plant._id}`}>
+                    <button className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg text-sm">
+                      Plant Details
+                    </button>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
   );
