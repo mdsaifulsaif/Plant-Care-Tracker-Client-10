@@ -44,7 +44,6 @@ const UpdatePlant = () => {
           });
           navigate(state);
         }
-        console.log("data show for clint site", data);
       });
   };
   return (

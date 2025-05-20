@@ -25,7 +25,6 @@ const AddPlant = () => {
             draggable: true,
           });
         }
-        console.log("data show for clint site", data);
       });
   };
   return (

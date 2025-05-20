@@ -11,13 +11,43 @@ import {
   FaTrash,
 } from "react-icons/fa";
 import { Link, useLoaderData, useLocation } from "react-router";
+import Swal from "sweetalert2";
 
 const MyPlant = () => {
-  const plants = useLoaderData();
+  const initialPlants = useLoaderData();
+  const [remaingplants, setRemainigPlants] = useState(initialPlants);
   const { pathname } = useLocation();
   // const [plants, setPlants] = useState([]);
 
-  const handleDelete = async (id) => {
+  const handledelete = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/delete/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              const deletedPlant = remaingplants.filter((p) => p._id !== id);
+              setRemainigPlants(deletedPlant);
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "Your file has been deleted.",
+        //   icon: "success",
+        // });
+      }
+    });
     // if (confirm('Are you sure you want to delete this plant?')) {
     //   try {
     //     await fetch(`/api/plants/${id}`, { method: 'DELETE' });
@@ -36,10 +66,10 @@ const MyPlant = () => {
       </div>
 
       <div className="space-y-6">
-        {plants.map((plant) => (
+        {remaingplants.map((plant) => (
           <div
             key={plant._id}
-            className=" bg-white w-10/12 mx-auto rounded-2xl shadow-md overflow-hidden flex flex-col md:flex-row"
+            className=" bg-white md:w-10/12 mx-auto rounded-2xl shadow-md overflow-hidden flex flex-col md:flex-row"
           >
             {/* Right Content */}
             <div className="md:w-2/3 w-full p-6 space-y-3">
@@ -97,7 +127,10 @@ const MyPlant = () => {
                   </button>
                 </Link>
 
-                <button className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+                <button
+                  onClick={() => handledelete(plant._id)}
+                  className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+                >
                   <FaTrash /> Delete
                 </button>
               </div>
