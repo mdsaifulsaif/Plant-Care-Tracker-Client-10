@@ -31,7 +31,7 @@ const AddPlant = () => {
   return (
     <form
       onSubmit={handlePlant}
-      className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 bg-white rounded-2xl shadow-md"
+      className="w-11/12 mx-auto bg-white grid grid-cols-1 md:grid-cols-2 gap-4 p-6  rounded-2xl shadow-md"
     >
       <h2 className="text-2xl font-bold col-span-full flex items-center gap-2 text-green-700 mb-4">
         <FaPlusCircle className="text-green-600" />

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 // import logo from "../../assets/logo.png";
 import { NavLink } from "react-router"; // Fixed import
-import { FaBarsStaggered } from "react-icons/fa6";
+import { FaBarsStaggered, FaLeaf } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
 // import "./header.css";
 
 function Navber() {
+  const email = "hello@gmail.com";
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleMenu = () => {
@@ -15,27 +16,27 @@ function Navber() {
   const navItems = (
     <>
       <li>
-        <NavLink to="/" className="hover:text-blue-600">
+        <NavLink to="/" className="hover:text-green-600">
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/all-plants" className="hover:text-blue-600">
+        <NavLink to="/all-plants" className="hover:text-green-600">
           All Plants
         </NavLink>
       </li>
       <li>
-        <NavLink to="/add-plant" className="hover:text-blue-600">
+        <NavLink to="/add-plant" className="hover:text-green-600">
           Add Plant
         </NavLink>
       </li>
       <li>
-        <NavLink to="/my-plant" className="hover:text-blue-600">
+        <NavLink to={`/my-plants/${email}`} className="hover:text-green-600">
           My Plants
         </NavLink>
       </li>
       <li>
-        <NavLink to="/login" className="hover:text-blue-600">
+        <NavLink to="/login" className="hover:text-green-600">
           Login
         </NavLink>
       </li>
@@ -48,7 +49,8 @@ function Navber() {
         {/* Left: Logo */}
         <div className="flex items-center gap-2">
           {/* <img className="w-[35px]" src="" alt="Phudu Logo" /> */}
-          <h3 className="font-bold text-xl">Phudu</h3>
+          <FaLeaf className="text-green-600 text-2xl" />
+          <h3 className="font-bold text-xl">Ninja</h3>
         </div>
 
         {/* Middle: Nav Links (desktop) */}

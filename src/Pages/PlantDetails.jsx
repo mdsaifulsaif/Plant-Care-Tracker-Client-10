@@ -29,7 +29,7 @@ function PlantDetails() {
 
   return (
     // <div className="h-[80vh]  flex items-center justify-center">
-    <div className="max-w-4xl mb-10 mt-5 mx-auto p-6 bg-white rounded-2xl shadow-lg mt-8">
+    <div className="max-w-4xl mb-10  mx-auto p-6 bg-white rounded-2xl shadow-lg mt-8">
       <div className="flex flex-col md:flex-row gap-6">
         <img
           src={image}
