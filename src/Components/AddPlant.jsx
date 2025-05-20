@@ -1,8 +1,38 @@
 import { FaPlusCircle } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const AddPlant = () => {
+  const handlePlant = (e) => {
+    e.preventDefault();
+    const meee = "hello me";
+    const form = e.target;
+    const formData = new FormData(form);
+    const newPlant = Object.fromEntries(formData.entries());
+
+    fetch("http://localhost:3000/plant", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(newPlant),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Plant Added Successfully!",
+            icon: "success",
+            draggable: true,
+          });
+        }
+        console.log("data show for clint site", data);
+      });
+  };
   return (
-    <form className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 bg-white rounded-2xl shadow-md">
+    <form
+      onSubmit={handlePlant}
+      className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 bg-white rounded-2xl shadow-md"
+    >
       <h2 className="text-2xl font-bold col-span-full flex items-center gap-2 text-green-700 mb-4">
         <FaPlusCircle className="text-green-600" />
         Add New Plant

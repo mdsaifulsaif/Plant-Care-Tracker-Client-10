@@ -20,18 +20,18 @@ function Navber() {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/booking" className="hover:text-blue-600">
-          My Bookings
+        <NavLink to="/all-plants" className="hover:text-blue-600">
+          All Plants
         </NavLink>
       </li>
       <li>
-        <NavLink to="/blogs" className="hover:text-blue-600">
-          Blogs
+        <NavLink to="/add-plant" className="hover:text-blue-600">
+          Add Plant
         </NavLink>
       </li>
       <li>
         <NavLink to="/contact" className="hover:text-blue-600">
-          Contact Us
+          Login
         </NavLink>
       </li>
     </>
