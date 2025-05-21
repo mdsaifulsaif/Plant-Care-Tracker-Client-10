@@ -4,6 +4,8 @@ import "keen-slider/keen-slider.min.css";
 import Slider from "../Components/Slider";
 import NewPlants from "../Components/NewPlants";
 import { useLoaderData } from "react-router";
+import TopPlantCareMistakes from "../Components/TopPlantCareMistakes";
+import SeasonalPlantCareTips from "../Components/SeasonalPlantCareTips";
 
 function Home() {
   // const data = useLoaderData();
@@ -30,8 +32,10 @@ function Home() {
   // });
   return (
     <div className="w-11/12 mx-auto">
-      {/* <Slider></Slider> */}
+      <Slider></Slider>
       <NewPlants></NewPlants>
+      <TopPlantCareMistakes></TopPlantCareMistakes>
+      <SeasonalPlantCareTips></SeasonalPlantCareTips>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { use, useContext, useRef } from "react";
+import React, { use, useContext, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router";
 import { useNavigate } from "react-router";
@@ -8,6 +8,7 @@ import { updateProfile } from "firebase/auth";
 
 function Register() {
   const { createUser, googleLogin, setUser } = useContext(AuthContext);
+  const [errorMassage, setErrorMassage] = useState();
 
   const navigate = useNavigate();
 
@@ -17,6 +18,13 @@ function Register() {
     const email = e.target.email.value;
     const photourl = e.target.photourl.value;
     const password = e.target.password.value;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (regex.test(password) == false) {
+      setErrorMassage(
+        "Password must be 6+ chars with uppercase & lowercase letters."
+      );
+      return;
+    }
 
     createUser(email, password)
       .then((res) => {
@@ -114,7 +122,7 @@ function Register() {
                   Login
                 </Link>
               </p>
-              <p className="text-red-700"></p>
+              <p className="text-red-700">{errorMassage}</p>
             </form>
             {/* google login  */}
             <div className="mx-auto">

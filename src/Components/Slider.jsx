@@ -36,7 +36,6 @@ function Slider() {
     [
       (slider) => {
         let timeout;
-        let mouseOver = false;
 
         function clearNextTimeout() {
           clearTimeout(timeout);
@@ -44,22 +43,13 @@ function Slider() {
 
         function nextTimeout() {
           clearTimeout(timeout);
-          if (mouseOver) return;
           timeout = setTimeout(() => {
             slider.next();
           }, 2500);
         }
 
         slider.on("created", () => {
-          slider.container.addEventListener("mouseover", () => {
-            mouseOver = true;
-            clearNextTimeout();
-          });
-          slider.container.addEventListener("mouseout", () => {
-            mouseOver = false;
-            nextTimeout();
-          });
-          nextTimeout();
+          nextTimeout(); // Start auto-slide
         });
 
         slider.on("dragStarted", clearNextTimeout);
@@ -71,7 +61,10 @@ function Slider() {
 
   return (
     <div className="px-4 py-10 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold text-center mb-6">Our Features</h2>
+      <h2 className="text-2xl  font-bold text-green-700 mb-6 flex items-center justify-center gap-2">
+        <FaLeaf className="text-green-700" />
+        Our Features
+      </h2>
       <div ref={sliderRef} className="keen-slider">
         {slides.map((slide, index) => (
           <div

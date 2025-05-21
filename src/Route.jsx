@@ -8,6 +8,7 @@ import AllPlants from "./Pages/AllPlants";
 import PlantDetails from "./Pages/PlantDetails";
 import MyPlant from "./Pages/MyPlant";
 import UpdatePlant from "./Pages/UpdatePlant";
+import PrivetRoute from "./PrivetRoute/PrivetRoute";
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +24,11 @@ export const router = createBrowserRouter([
 
       {
         path: "/add-plant",
-        Component: AddPlant,
+        element: (
+          <PrivetRoute>
+            <AddPlant></AddPlant>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/all-plants",
@@ -41,7 +46,11 @@ export const router = createBrowserRouter([
         path: "/my-plants/:email",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/my-plants?email=${params.email}`),
-        Component: MyPlant,
+        element: (
+          <PrivetRoute>
+            <MyPlant></MyPlant>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/update-plant/:id",

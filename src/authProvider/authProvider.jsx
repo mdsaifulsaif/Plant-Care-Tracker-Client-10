@@ -46,6 +46,7 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setUserLodding(false);
     });
 
     return () => {
@@ -56,6 +57,7 @@ function AuthProvider({ children }) {
   const authData = {
     namee: "saifulislamgmail",
     user,
+    userLodding,
     setUser,
     createUser,
     loginUser,

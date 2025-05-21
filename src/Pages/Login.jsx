@@ -5,7 +5,10 @@ import { AuthContext } from "../authProvider/authProvider";
 import Swal from "sweetalert2";
 
 function Login() {
-  // const location = useLocation()
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.state, "location");
   const { loginUser, googleLogin, setUser } = useContext(AuthContext);
   const [errormassage, setErrorMessage] = useState(null);
 
@@ -17,6 +20,11 @@ function Login() {
     loginUser(email, password)
       .then((res) => {
         const loggetuser = res.user;
+        if (location.state === "/my-plants/undefined") {
+          navigate("/");
+        } else {
+          navigate(location.state);
+        }
       })
       .catch((error) => {
         const errom = error.message;
