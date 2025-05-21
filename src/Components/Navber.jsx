@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { use, useContext, useState } from "react";
 // import logo from "../../assets/logo.png";
 import { NavLink } from "react-router"; // Fixed import
 import { FaBarsStaggered, FaLeaf } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
+import { AuthContext } from "../authProvider/authProvider";
+
 // import "./header.css";
 
 function Navber() {
+  const userinfo = useContext(AuthContext);
+  console.log(userinfo);
   const email = "hello@gmail.com";
   const [menuOpen, setMenuOpen] = useState(false);
 

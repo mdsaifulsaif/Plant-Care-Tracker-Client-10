@@ -1,11 +1,34 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, Navigate, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../authProvider/authProvider";
+import Swal from "sweetalert2";
 
 function Login() {
-  // const location = useLocation();
+  // const location = useLocation()
+  const { loginUser, googleLogin } = useContext(AuthContext);
+  const [errormassage, setErrorMessage] = useState(null);
 
-  const handleLogin = (e) => {};
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    loginUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((error) => {
+        const errom = error.message;
+        setErrorMessage(errom);
+        Swal.fire({
+          icon: "error",
+          title: `${errom}`,
+          text: "Something went wrong!",
+          confirmButtonColor: "#008000",
+        });
+      });
+  };
 
   return (
     <div className="flex items-center justify-center h-screen">

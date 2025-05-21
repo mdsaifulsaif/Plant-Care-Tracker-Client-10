@@ -1,10 +1,38 @@
-import React, { use, useRef } from "react";
+import React, { use, useContext, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router";
 import { useNavigate } from "react-router";
+import { AuthContext } from "../authProvider/authProvider";
+import Swal from "sweetalert2";
 
 function Register() {
-  const handleRegister = (e) => {};
+  const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const photourl = e.target.photourl.value;
+    const password = e.target.password.value;
+
+    createUser(email, password)
+      .then((res) => {
+        console.log(res);
+        Swal.fire({
+          title: "User Create successfully!",
+          icon: "success",
+          iconColor: "#008000",
+          confirmButtonColor: "#008000",
+          draggable: true,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log("resgiter click", name, email, password, photourl);
+  };
   return (
     <div className="">
       <div className="flex my-5  items-center justify-center h-screen">
