@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 function Login() {
   // const location = useLocation()
-  const { loginUser, googleLogin } = useContext(AuthContext);
+  const { loginUser, googleLogin, setUser } = useContext(AuthContext);
   const [errormassage, setErrorMessage] = useState(null);
 
   const handleLogin = (e) => {
@@ -16,7 +16,26 @@ function Login() {
 
     loginUser(email, password)
       .then((res) => {
-        console.log(res.user);
+        const loggetuser = res.user;
+      })
+      .catch((error) => {
+        const errom = error.message;
+        setErrorMessage(errom);
+        Swal.fire({
+          icon: "error",
+          title: `${errom}`,
+          text: "Something went wrong!",
+          confirmButtonColor: "#008000",
+        });
+      });
+  };
+
+  //handle google login
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
       })
       .catch((error) => {
         const errom = error.message;
@@ -67,7 +86,10 @@ function Login() {
             <p className="text-red-700 "></p>
           </form>
           <div className="mx-auto">
-            <button className="btn bg-white text-black border-[#e5e5e5]">
+            <button
+              onClick={handleGoogleLogin}
+              className="btn bg-white text-black border-[#e5e5e5]"
+            >
               <svg
                 aria-label="Google logo"
                 width="16"

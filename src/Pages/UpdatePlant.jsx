@@ -40,6 +40,8 @@ const UpdatePlant = () => {
           Swal.fire({
             title: "Plant Update Successfully!",
             icon: "success",
+            iconColor: "#008000",
+            confirmButtonColor: "#008000",
             draggable: true,
           });
           navigate(state);

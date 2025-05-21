@@ -25,7 +25,8 @@ const MyPlant = () => {
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      iconColor: "#008000",
+      confirmButtonColor: "#008000",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
@@ -41,21 +42,8 @@ const MyPlant = () => {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
             }
           });
-        // Swal.fire({
-        //   title: "Deleted!",
-        //   text: "Your file has been deleted.",
-        //   icon: "success",
-        // });
       }
     });
-    // if (confirm('Are you sure you want to delete this plant?')) {
-    //   try {
-    //     await fetch(`/api/plants/${id}`, { method: 'DELETE' });
-    //     setPlants(plants.filter(plant => plant._id !== id));
-    //   } catch (error) {
-    //     console.error('Delete failed:', error);
-    //   }
-    // }
   };
 
   return (
@@ -66,6 +54,18 @@ const MyPlant = () => {
       </div>
 
       <div className="space-y-6">
+        <div>
+          {remaingplants.length === 0 ? (
+            <div className="text-center text-gray-500">
+              <h3 className="text-xl font-semibold">No Plants Found</h3>
+              <p className="mt-2">Please add some plants to your collection.</p>
+            </div>
+          ) : (
+            <h3 className="text-lg font-semibold text-gray-700">
+              You have {remaingplants.length} plants
+            </h3>
+          )}
+        </div>
         {remaingplants.map((plant) => (
           <div
             key={plant._id}

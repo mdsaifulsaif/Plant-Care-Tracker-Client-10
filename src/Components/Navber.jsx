@@ -1,6 +1,8 @@
 import React, { use, useContext, useState } from "react";
+import { FaUserAlt } from "react-icons/fa";
+
 // import logo from "../../assets/logo.png";
-import { NavLink } from "react-router"; // Fixed import
+import { Link, NavLink } from "react-router"; // Fixed import
 import { FaBarsStaggered, FaLeaf } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
 import { AuthContext } from "../authProvider/authProvider";
@@ -8,15 +10,25 @@ import { AuthContext } from "../authProvider/authProvider";
 // import "./header.css";
 
 function Navber() {
-  const userinfo = useContext(AuthContext);
-  console.log(userinfo);
-  const email = "hello@gmail.com";
+  const { user, signOutUser } = useContext(AuthContext);
+  const email = user?.email;
+  // const email = "hello@gmail.com";
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  // LogOut User
+  const handleLogOut = () => {
+    signOutUser()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const navItems = (
     <>
       <li>
@@ -39,16 +51,12 @@ function Navber() {
           My Plants
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/login" className="hover:text-green-600">
-          Login
-        </NavLink>
-      </li>
+      <li></li>
     </>
   );
 
   return (
-    <div className="max-w-[1200px] mx-auto py-4 px-5 md:px-0">
+    <div className="w-11/12 mx-auto py-4 px-5 md:px-0">
       <nav className="flex justify-between items-center">
         {/* Left: Logo */}
         <div className="flex items-center gap-2">
@@ -65,10 +73,35 @@ function Navber() {
         </div>
 
         {/* Right: Emergency Button */}
-        <div className="hidden md:block">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-2xl hover:bg-blue-700 transition">
-            Emergency
-          </button>
+        <div className="hidden  md:block">
+          {user ? (
+            <div className="flex items-center justify-center">
+              <div className="w-[50px] h-[50px] flex items-center justify-center rounded-full border-2 border-green-600 mr-3">
+                {user.photoURL ? (
+                  <img
+                    className="w-full h-full rounded-full border-2 border-green-600"
+                    src={user.photoURL && user.photoURL}
+                    alt=""
+                  />
+                ) : (
+                  <FaUserAlt size={30} />
+                )}
+              </div>
+              <button
+                onClick={handleLogOut}
+                className="hover:text-green-600 bg-green-600 text-white px-3 py-2 rounded-sm"
+              >
+                Logi Out
+              </button>
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className="hover:text-green-600 bg-green-600 text-white px-3 py-2 rounded-sm"
+            >
+              Login
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Icon */}
@@ -87,7 +120,10 @@ function Navber() {
               {navItems}
             </ul>
             <div className="text-center pb-5">
-              <button className="bg-blue-600 text-white px-6 py-2 rounded-2xl hover:bg-blue-700 transition">
+              <Link to="/login" className="hover:text-green-600">
+                Login
+              </Link>
+              <button className="bg-blue-600 text-white px-2 py-2 rounded-2xl hover:bg-blue-700 transition">
                 Emergency
               </button>
             </div>

@@ -4,9 +4,11 @@ import { Link } from "react-router";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../authProvider/authProvider";
 import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 
 function Register() {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, googleLogin, setUser } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -18,7 +20,13 @@ function Register() {
 
     createUser(email, password)
       .then((res) => {
-        console.log(res);
+        const user = res.user;
+        //  Update Firebase user profile with name and photo
+        updateProfile(user, {
+          displayName: name,
+          photoURL: photourl,
+        });
+        setUser(user);
         Swal.fire({
           title: "User Create successfully!",
           icon: "success",
@@ -33,6 +41,26 @@ function Register() {
       });
     console.log("resgiter click", name, email, password, photourl);
   };
+
+  //google login
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errom = error.message;
+        setErrorMessage(errom);
+        Swal.fire({
+          icon: "error",
+          title: `${errom}`,
+          text: "Something went wrong!",
+          confirmButtonColor: "#008000",
+        });
+      });
+  };
+
   return (
     <div className="">
       <div className="flex my-5  items-center justify-center h-screen">
@@ -90,7 +118,10 @@ function Register() {
             </form>
             {/* google login  */}
             <div className="mx-auto">
-              <button className="btn bg-white text-black border-[#e5e5e5]">
+              <button
+                onClick={handleGoogleLogin}
+                className="btn bg-white text-black border-[#e5e5e5]"
+              >
                 <svg
                   aria-label="Google logo"
                   width="16"

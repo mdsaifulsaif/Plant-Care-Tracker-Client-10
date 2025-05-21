@@ -1,7 +1,14 @@
+import { useContext, useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { AuthContext } from "../authProvider/authProvider";
 
 const AddPlant = () => {
+  const { user } = useContext(AuthContext);
+  const [emailName, setEailName] = useState(user);
+  const { email, displayName } = emailName;
+  console.log(email, displayName);
+
   const handlePlant = (e) => {
     e.preventDefault();
     const meee = "hello me";
@@ -22,6 +29,8 @@ const AddPlant = () => {
           Swal.fire({
             title: "Plant Added Successfully!",
             icon: "success",
+            iconColor: "#008000",
+            confirmButtonColor: "#008000",
             draggable: true,
           });
         }
@@ -149,9 +158,11 @@ const AddPlant = () => {
           User Email
         </label>
         <input
+          defaultValue={email}
+          readOnly
           type="email"
           name="userEmail"
-          className="mt-1 w-full border border-gray-300 rounded-lg p-2"
+          className=" cursor-not-allowed mt-1 w-full border border-gray-300 rounded-lg p-2"
         />
       </div>
 
@@ -160,9 +171,11 @@ const AddPlant = () => {
           User Name
         </label>
         <input
+          defaultValue={displayName}
+          readOnly
           type="text"
           name="userName"
-          className="mt-1 w-full border border-gray-300 rounded-lg p-2"
+          className="  cursor-not-allowed mt-1 w-full border border-gray-300 rounded-lg p-2"
         />
       </div>
 
