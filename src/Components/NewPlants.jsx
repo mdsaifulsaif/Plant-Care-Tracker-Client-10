@@ -44,7 +44,7 @@ import { Link } from "react-router";
 // ];
 function NewPlants({ data }) {
   return (
-    <section className="p-6 bg-green-50 rounded-2xl shadow-md">
+    <section className="p-6 bg-green-50  rounded-2xl shadow-md">
       <div className="flex items-center gap-2 mb-6">
         <FaLeaf className="text-green-600 text-2xl" />
         <div className="p-4">
@@ -62,7 +62,7 @@ function NewPlants({ data }) {
         {data.map((plant) => (
           <div
             key={plant._id}
-            className="bg-white rounded-xl shadow p-4 hover:shadow-lg transition"
+            className="bg-white  rounded-xl shadow p-4 hover:shadow-lg transition"
           >
             <img
               src={plant.image}

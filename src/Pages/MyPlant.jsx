@@ -94,7 +94,7 @@ const MyPlant = () => {
                 {plant.category || "N/A"}
               </div>
 
-              <div className="flex items-center gap-3 text-gray-700">
+              <div className="flex items-center gap-3 text-gray-700 text-justify">
                 <FaAlignLeft />
                 <span className="font-medium">Description:</span>{" "}
                 {plant.description}

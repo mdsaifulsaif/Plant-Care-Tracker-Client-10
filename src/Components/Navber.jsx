@@ -55,13 +55,11 @@ function Navbar() {
 
   return (
     <div className="w-full bg-gray-900 dark:bg-gray-900 shadow-md">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div className="container mx-auto px-4  flex justify-between items-center">
         {/* Left Side for All Devices */}
         <div className="flex items-center gap-2">
           <FaLeaf className="text-green-600 text-2xl" />
-          <h1 className="font-bold text-xl hidden md:block text-white">
-            Ninja
-          </h1>
+          <h1 className="font-bold text-xl  text-white">Ninja</h1>
         </div>
 
         {/* Mobile Menu Icon */}
@@ -72,34 +70,39 @@ function Navbar() {
           >
             {dark ? <FaSun /> : <FaMoon />}
           </button>
-          {user ? (
-            <div className="relative group">
-              {user.photoURL ? (
-                <img
-                  src={user.photoURL}
-                  alt="Profile"
-                  className="w-10 h-10 rounded-full border-2 border-green-600"
-                />
-              ) : (
-                <FaUserAlt size={30} />
-              )}
-              <div className="absolute right-0 mt-2 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-opacity duration-300">
-                <button
-                  onClick={handleLogOut}
-                  className="bg-red-600 text-white text-sm px-3 py-1 rounded"
-                >
-                  Logout
-                </button>
+
+          <div>
+            {user ? (
+              <div className="flex items-center gap-2">
+                {user.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt="Profile"
+                    className="w-10 h-10 rounded-full border-2 border-green-600"
+                  />
+                ) : (
+                  <FaUserAlt size={30} />
+                )}
+
+                {/* logout button  */}
+                <div className=" ">
+                  <button
+                    onClick={handleLogOut}
+                    className=" bg-green-600 text-white px-3 py-2 rounded-sm"
+                  >
+                    Logout
+                  </button>
+                </div>
               </div>
-            </div>
-          ) : (
-            <Link
-              to="/login"
-              className="bg-green-600 text-white px-3 py-2 rounded-sm"
-            >
-              Login
-            </Link>
-          )}
+            ) : (
+              <Link
+                to="/login"
+                className="bg-green-600 text-white px-3 py-2 rounded-sm"
+              >
+                Login
+              </Link>
+            )}
+          </div>
 
           <button onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? (
@@ -126,15 +129,24 @@ function Navbar() {
           {user ? (
             <div className="relative group">
               {user.photoURL ? (
-                <img
-                  src={user.photoURL}
-                  alt="Profile"
-                  className="w-10 h-10 cursor-pointer rounded-full border-2 border-green-600"
-                />
+                <div className="p-4">
+                  <a
+                    className="mt-5"
+                    data-tooltip-id="my-tooltip"
+                    data-tooltip-content={user.displayName}
+                  >
+                    <img
+                      src={user.photoURL}
+                      alt="Profile"
+                      className="w-10 h-10 cursor-pointer rounded-full border-2 border-green-600"
+                    />
+                  </a>
+                  <Tooltip id="my-tooltip" place="left" />
+                </div>
               ) : (
                 <FaUserAlt size={30} />
               )}
-              <div className="absolute cursor-pointer top-8 right-0 mt-2 hidden group-hover:block">
+              <div className="absolute cursor-pointer top-9 right-0 mt-2 hidden group-hover:block">
                 <button
                   onClick={handleLogOut}
                   className="bg-green-600 cursor-pointer text-white text-sm px-3 py-2 rounded"

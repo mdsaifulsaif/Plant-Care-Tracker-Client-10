@@ -26,6 +26,7 @@ const AddPlant = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
+          e.target.reset();
           Swal.fire({
             title: "Plant Added Successfully!",
             icon: "success",
@@ -54,6 +55,7 @@ const AddPlant = () => {
           Image URL
         </label>
         <input
+          defaultValue="https://i.ibb.co/4fYx2gK/plant.png"
           placeholder="Image URL"
           type="text"
           name="image"
@@ -66,6 +68,7 @@ const AddPlant = () => {
           Plant Name
         </label>
         <input
+          required
           placeholder="Plant Name"
           type="text"
           name="plantName"
@@ -108,6 +111,7 @@ const AddPlant = () => {
           Description
         </label>
         <textarea
+          maxLength={400}
           placeholder="Description"
           name="description"
           rows="3"
@@ -120,6 +124,7 @@ const AddPlant = () => {
           Watering Frequency
         </label>
         <input
+          required
           placeholder="Watering Frequency"
           type="text"
           name="wateringFrequency"
@@ -155,6 +160,7 @@ const AddPlant = () => {
           Health Status
         </label>
         <input
+          required
           placeholder="Health Status"
           type="text"
           name="healthStatus"

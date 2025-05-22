@@ -61,7 +61,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="text-center text-gray-500 text-sm mt-10 border-t border-gray-700 pt-4">
-        © {new Date().getFullYear()} Ninja User. All rights reserved.
+        © 2025 Ninja User. All rights reserved.
       </div>
     </footer>
   );
