@@ -47,14 +47,17 @@ function NewPlants({ data }) {
     <section className="p-6 bg-green-50 rounded-2xl shadow-md">
       <div className="flex items-center gap-2 mb-6">
         <FaLeaf className="text-green-600 text-2xl" />
-        <h2 className="text-2xl font-bold text-green-800">New Plants</h2>
+        <div className="p-4">
+          <a
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="New Plants To Day"
+          >
+            <h2 className="text-2xl font-bold text-green-800">New Plants</h2>
+          </a>
+          <Tooltip id="my-tooltip" />
+        </div>
       </div>
-      <div className="p-4">
-        <a data-tooltip-id="my-tooltip" data-tooltip-content="Hello world!">
-          ◕‿‿◕
-        </a>
-        <Tooltip id="my-tooltip" />
-      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {data.map((plant) => (
           <div
@@ -64,7 +67,7 @@ function NewPlants({ data }) {
             <img
               src={plant.image}
               alt={plant.plantName}
-              className="rounded-xl w-full h-40 object-cover mb-4"
+              className="rounded-xl object-center w-full h-40 mb-4"
             />
             <h3 className="text-xl font-semibold text-green-700 mb-2">
               {plant.plantName}

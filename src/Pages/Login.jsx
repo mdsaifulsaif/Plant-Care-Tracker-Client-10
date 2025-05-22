@@ -8,7 +8,7 @@ function Login() {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.state, "location");
+
   const { loginUser, googleLogin, setUser } = useContext(AuthContext);
   const [errormassage, setErrorMessage] = useState(null);
 
@@ -20,7 +20,12 @@ function Login() {
     loginUser(email, password)
       .then((res) => {
         const loggetuser = res.user;
-        navigate(location.state);
+
+        if (location.state === null) {
+          navigate("/");
+        } else {
+          navigate(location.state);
+        }
       })
       .catch((error) => {
         const errom = error.message;
@@ -39,7 +44,12 @@ function Login() {
     googleLogin()
       .then((res) => {
         const user = res.user;
-        navigate(location.state);
+
+        if (location.state === null) {
+          navigate("/");
+        } else {
+          navigate(location.state);
+        }
       })
       .catch((error) => {
         const errom = error.message;
@@ -55,7 +65,7 @@ function Login() {
 
   return (
     <div className="flex items-center justify-center h-screen dark:text-gray-900">
-      <div className="card bg-base-100 dark:bg-gray-900 w-full max-w-sm shrink-0 shadow-2xl">
+      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <Helmet>
           <title>Ninja | Login</title>
         </Helmet>

@@ -8,7 +8,6 @@ const AddPlant = () => {
   const { user } = useContext(AuthContext);
   const [emailName, setEailName] = useState(user);
   const { email, displayName } = emailName;
-  console.log(email, displayName);
 
   const handlePlant = (e) => {
     e.preventDefault();
@@ -17,7 +16,7 @@ const AddPlant = () => {
     const formData = new FormData(form);
     const newPlant = Object.fromEntries(formData.entries());
 
-    fetch("http://localhost:3000/plant", {
+    fetch("https://mango-server-nine.vercel.app/plant", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -55,6 +54,7 @@ const AddPlant = () => {
           Image URL
         </label>
         <input
+          placeholder="Image URL"
           type="text"
           name="image"
           className="mt-1 w-full border border-gray-300 rounded-lg p-2"
@@ -66,6 +66,7 @@ const AddPlant = () => {
           Plant Name
         </label>
         <input
+          placeholder="Plant Name"
           type="text"
           name="plantName"
           className="mt-1 w-full border border-gray-300 rounded-lg p-2"
@@ -107,6 +108,7 @@ const AddPlant = () => {
           Description
         </label>
         <textarea
+          placeholder="Description"
           name="description"
           rows="3"
           className="mt-1 w-full border border-gray-300 rounded-lg p-2"
@@ -118,6 +120,7 @@ const AddPlant = () => {
           Watering Frequency
         </label>
         <input
+          placeholder="Watering Frequency"
           type="text"
           name="wateringFrequency"
           className="mt-1 w-full border border-gray-300 rounded-lg p-2"
@@ -129,6 +132,7 @@ const AddPlant = () => {
           Last Watered Date
         </label>
         <input
+          placeholder="Last Watered Date"
           type="date"
           name="lastWateredDate"
           className="mt-1 w-full border border-gray-300 rounded-lg p-2"
@@ -151,6 +155,7 @@ const AddPlant = () => {
           Health Status
         </label>
         <input
+          placeholder="Health Status"
           type="text"
           name="healthStatus"
           className="mt-1 w-full border border-gray-300 rounded-lg p-2"

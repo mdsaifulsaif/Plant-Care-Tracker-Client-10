@@ -20,7 +20,8 @@ export const router = createBrowserRouter([
       {
         index: true,
         path: "/",
-        loader: () => fetch("http://localhost:3000/plants-latest"),
+        loader: () =>
+          fetch("https://mango-server-nine.vercel.app/plants-latest"),
         hydrateFallbackElement: <LoaddingSpinner>r</LoaddingSpinner>,
         Component: Home,
       },
@@ -35,7 +36,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/all-plants",
-        loader: () => fetch("http://localhost:3000/plants"),
+        loader: () => fetch("https://mango-server-nine.vercel.app/plants"),
         hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
         Component: AllPlants,
       },
@@ -43,9 +44,9 @@ export const router = createBrowserRouter([
         path: "plant/:id",
 
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/plants/${params.id}`),
+          fetch(`https://mango-server-nine.vercel.app/plants/${params.id}`),
         hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
-        // Component: PlantDetails,
+
         element: (
           <PrivetRoute>
             <PlantDetails></PlantDetails>
@@ -55,7 +56,9 @@ export const router = createBrowserRouter([
       {
         path: "/my-plants/:email",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/my-plants?email=${params.email}`),
+          fetch(
+            `https://mango-server-nine.vercel.app/my-plants?email=${params.email}`
+          ),
         hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
         element: (
           <PrivetRoute>
@@ -66,7 +69,7 @@ export const router = createBrowserRouter([
       {
         path: "/update-plant/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/plants/${params.id}`),
+          fetch(`https://mango-server-nine.vercel.app/plants/${params.id}`),
         hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
         Component: UpdatePlant,
       },

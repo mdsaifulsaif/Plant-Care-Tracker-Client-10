@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import {
   FaLeaf,
@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import { Link, useLoaderData, useLocation } from "react-router";
 import Swal from "sweetalert2";
+import LoaddingSpinner from "../Components/LoaddingSpinner";
 
 const MyPlant = () => {
   const initialPlants = useLoaderData();
@@ -32,7 +33,7 @@ const MyPlant = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/delete/${id}`, {
+        fetch(`https://mango-server-nine.vercel.app/delete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -49,6 +50,7 @@ const MyPlant = () => {
 
   return (
     <div className="p-4 mt-5  w-11/12  mx-auto bg-green-50 rounded-lg shadow-md">
+      <Suspense fallback={<LoaddingSpinner></LoaddingSpinner>}></Suspense>
       <Helmet>
         <title>Ninja | My Plant</title>
       </Helmet>
@@ -149,7 +151,7 @@ const MyPlant = () => {
               <img
                 src={plant.image}
                 alt={plant.plantName}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-fill"
               />
             </div>
           </div>

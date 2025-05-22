@@ -69,7 +69,7 @@ function Slider() {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="keen-slider__slide flex items-center justify-center"
+            className="keen-slider__slide flex items-center md:h-[70vh] justify-center"
           >
             <div className="bg-white shadow-lg rounded-xl p-6 w-full h-48 flex flex-col items-center justify-center text-center hover:shadow-xl transition">
               <div className="text-green-600 mb-3">{slide.icon}</div>

@@ -45,9 +45,9 @@ function Register() {
         navigate("/");
       })
       .catch((error) => {
-        console.log(error);
+        const errom = error.message;
+        setErrorMassage(errom);
       });
-    console.log("resgiter click", name, email, password, photourl);
   };
 
   //google login
@@ -55,11 +55,10 @@ function Register() {
     googleLogin()
       .then((res) => {
         const user = res.user;
-        console.log(user);
       })
       .catch((error) => {
         const errom = error.message;
-        setErrorMessage(errom);
+        setErrorMassage(errom);
         Swal.fire({
           icon: "error",
           title: `${errom}`,

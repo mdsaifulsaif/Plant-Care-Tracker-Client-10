@@ -10,18 +10,20 @@ import "react-tooltip/dist/react-tooltip.css";
 function Navbar() {
   const { user, signOutUser } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dark, setDark] = useState(
-    () => window.matchMedia("(prefers-color-scheme: dark)").matches
-  );
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (dark) {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+  }, [dark]);
 
   const handleLogOut = () => {
     signOutUser().catch(console.log);
   };
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-    dark ? root.classList.add("dark") : root.classList.remove("dark");
-  }, [dark]);
 
   const navItems = (
     <>
@@ -67,9 +69,6 @@ function Navbar() {
           <button
             className="p-2 rounded bg-green-700 text-white"
             onClick={() => setDark(!dark)}
-            aria-label="Toggle theme"
-            data-tooltip-id="theme-tooltip"
-            data-tooltip-content="Toggle Light/Dark Mode"
           >
             {dark ? <FaSun /> : <FaMoon />}
           </button>
@@ -118,11 +117,8 @@ function Navbar() {
           </ul>
 
           <button
-            onClick={() => setDark(!dark)}
             className="p-2 rounded bg-green-700 text-white"
-            aria-label="Toggle theme"
-            data-tooltip-id="theme-tooltip"
-            data-tooltip-content="Toggle Light/Dark Mode"
+            onClick={() => setDark(!dark)}
           >
             {dark ? <FaSun /> : <FaMoon />}
           </button>
