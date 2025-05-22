@@ -20,11 +20,12 @@ function Login() {
     loginUser(email, password)
       .then((res) => {
         const loggetuser = res.user;
-        if (location.state === "/my-plants/undefined") {
-          navigate("/");
-        } else {
-          navigate(location.state);
-        }
+        navigate("/");
+        // if (location.state === "/my-plants/undefined") {
+        //   navigate("/");
+        // } else {
+        //   navigate(location.state);
+        // }
       })
       .catch((error) => {
         const errom = error.message;

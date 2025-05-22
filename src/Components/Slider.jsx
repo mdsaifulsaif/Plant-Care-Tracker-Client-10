@@ -65,7 +65,7 @@ function Slider() {
         <FaLeaf className="text-green-700" />
         Our Features
       </h2>
-      <div ref={sliderRef} className="keen-slider">
+      <div ref={sliderRef} className="keen-slider ">
         {slides.map((slide, index) => (
           <div
             key={index}

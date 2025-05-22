@@ -5,7 +5,7 @@ import Footer from "../Components/Footer";
 
 function Mainlayout() {
   return (
-    <div className="">
+    <div className=" overflow-x-hidden">
       <Navber></Navber>
       <Outlet></Outlet>
       <Footer></Footer>

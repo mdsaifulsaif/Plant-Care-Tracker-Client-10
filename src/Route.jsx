@@ -9,6 +9,8 @@ import PlantDetails from "./Pages/PlantDetails";
 import MyPlant from "./Pages/MyPlant";
 import UpdatePlant from "./Pages/UpdatePlant";
 import PrivetRoute from "./PrivetRoute/PrivetRoute";
+import NotFound from "./Components/NotFound";
+import LoaddingSpinner from "./Components/LoaddingSpinner";
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +20,8 @@ export const router = createBrowserRouter([
       {
         index: true,
         path: "/",
-        loader: () => fetch("http://localhost:3000/plants"),
+        loader: () => fetch("http://localhost:3000/plants-latest"),
+        hydrateFallbackElement: <LoaddingSpinner>r</LoaddingSpinner>,
         Component: Home,
       },
 
@@ -33,6 +36,7 @@ export const router = createBrowserRouter([
       {
         path: "/all-plants",
         loader: () => fetch("http://localhost:3000/plants"),
+        hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
         Component: AllPlants,
       },
       {
@@ -40,12 +44,14 @@ export const router = createBrowserRouter([
 
         loader: ({ params }) =>
           fetch(`http://localhost:3000/plants/${params.id}`),
+        hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
         Component: PlantDetails,
       },
       {
         path: "/my-plants/:email",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/my-plants?email=${params.email}`),
+        hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
         element: (
           <PrivetRoute>
             <MyPlant></MyPlant>
@@ -56,6 +62,7 @@ export const router = createBrowserRouter([
         path: "/update-plant/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/plants/${params.id}`),
+        hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
         Component: UpdatePlant,
       },
       {
@@ -66,6 +73,14 @@ export const router = createBrowserRouter([
         path: "/register",
         Component: Register,
       },
+      {
+        path: "*",
+        Component: NotFound,
+      },
     ],
+  },
+  {
+    path: "*",
+    Component: NotFound,
   },
 ]);

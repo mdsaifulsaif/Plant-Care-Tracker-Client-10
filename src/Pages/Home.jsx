@@ -6,34 +6,43 @@ import NewPlants from "../Components/NewPlants";
 import { useLoaderData } from "react-router";
 import TopPlantCareMistakes from "../Components/TopPlantCareMistakes";
 import SeasonalPlantCareTips from "../Components/SeasonalPlantCareTips";
+import LottiAnimation from "../Components/LottiAnimation";
 
 function Home() {
-  // const data = useLoaderData();
-  const [latestplant, setLatestPlant] = useState([]);
+  const data = useLoaderData();
+
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/plants")
-      .then((res) => res.json())
-      .then((data) => {
-        const letest = data.slice(-2).reverse();
-        setLatestPlant(letest);
-        console.log(latestplant);
-      });
-  }, []);
+    if (isDark) {
+      document.documentElement.classList.add("darkk");
+    }
 
-  // const [sliderRef] = useKeenSlider({
-  //   loop: true,
-  //   mode: "free-snap",
-  //   renderMode: "performance",
-  //   slides: {
-  //     perView: 1,
-  //     spacing: 15,
-  //   },
-  // });
+    return () => {
+      document.documentElement.classList.remove("darkk");
+    };
+  }, [isDark]);
+
+  // useEffect(() => {
+  //   // Add 'dark' class when this component mounts
+  //   document.documentElement.classList.add("darkk");
+
+  //   // Remove 'dark' class when unmount (navigate away)
+  //   return () => {
+  //     document.documentElement.classList.remove("darkk");
+  //   };
+  // }, []);
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="w-11/12  mx-auto">
       <Slider></Slider>
-      <NewPlants></NewPlants>
+      <button
+        onClick={() => setIsDark((prev) => !prev)}
+        className="bg-green-600 px-4 py-2 text-white rounded"
+      >
+        Toggle Dark Mode
+      </button>
+      <NewPlants data={data}></NewPlants>
+      <LottiAnimation></LottiAnimation>
       <TopPlantCareMistakes></TopPlantCareMistakes>
       <SeasonalPlantCareTips></SeasonalPlantCareTips>
     </div>

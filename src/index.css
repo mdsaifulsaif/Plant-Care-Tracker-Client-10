@@ -87,3 +87,8 @@ a.active {
     rgba(174, 63, 255, 1) 100%
   );
 }
+
+.darkk {
+  background: black;
+  color: white;
+}
