@@ -179,6 +179,7 @@ const UpdatePlant = () => {
           User Email
         </label>
         <input
+          readOnly
           type="email"
           name="userEmail"
           defaultValue={userEmail}
@@ -191,6 +192,7 @@ const UpdatePlant = () => {
           User Name
         </label>
         <input
+          readOnly
           type="text"
           name="userName"
           defaultValue={userName}
@@ -203,7 +205,7 @@ const UpdatePlant = () => {
           type="submit"
           className="mt-4 w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition"
         >
-          Submit
+          Update Plant
         </button>
       </div>
     </form>

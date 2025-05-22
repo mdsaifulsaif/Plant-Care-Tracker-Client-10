@@ -88,7 +88,11 @@ a.active {
   );
 }
 
-.darkk {
+/* .darkk {
+  background: black;
+  color: white;
+} */
+.dark {
   background: black;
   color: white;
 }
