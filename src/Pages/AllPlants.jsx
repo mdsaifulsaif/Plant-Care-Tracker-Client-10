@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { FaLeaf } from "react-icons/fa";
 import { Link, useLoaderData, useNavigate } from "react-router";
 
@@ -29,7 +30,10 @@ function AllPlants() {
   });
 
   return (
-    <section className="p-4 w-11/12 mx-auto sm:p-6 bg-green-50 rounded-2xl shadow-md">
+    <section className="mt-5 p-4 w-11/12 mx-auto sm:p-6 bg-green-50 rounded-2xl shadow-md">
+      <Helmet>
+        <title>Ninja | All Plants</title>
+      </Helmet>
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 mb-6">
         <FaLeaf className="text-green-600 text-2xl" />
         <h2 className="text-2xl font-bold text-green-800">All Plants</h2>

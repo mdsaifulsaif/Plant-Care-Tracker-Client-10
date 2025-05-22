@@ -20,12 +20,7 @@ function Login() {
     loginUser(email, password)
       .then((res) => {
         const loggetuser = res.user;
-        navigate("/");
-        // if (location.state === "/my-plants/undefined") {
-        //   navigate("/");
-        // } else {
-        //   navigate(location.state);
-        // }
+        navigate(location.state);
       })
       .catch((error) => {
         const errom = error.message;
@@ -44,7 +39,7 @@ function Login() {
     googleLogin()
       .then((res) => {
         const user = res.user;
-        console.log(user);
+        navigate(location.state);
       })
       .catch((error) => {
         const errom = error.message;
@@ -59,13 +54,17 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="flex items-center justify-center h-screen dark:text-gray-900">
+      <div className="card bg-base-100 dark:bg-gray-900 w-full max-w-sm shrink-0 shadow-2xl">
+        <Helmet>
+          <title>Ninja | Login</title>
+        </Helmet>
         <div className="card-body">
-          <h1 className="text-3xl font-bold">Login now!</h1>
+          <h1 className="text-3xl font-bold ">Login now!</h1>
           <form onSubmit={handleLogin} className="fieldset">
             <label className="label">Email</label>
             <input
+              required
               type="email"
               name="email"
               className="input"
@@ -73,6 +72,7 @@ function Login() {
             />
             <label className="label">Password</label>
             <input
+              required
               type="password"
               name="password"
               className="input"

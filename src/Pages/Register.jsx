@@ -73,12 +73,16 @@ function Register() {
     <div className="">
       <div className="flex my-5  items-center justify-center h-screen">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+          <Helmet>
+            <title>Ninja | Register</title>
+          </Helmet>
           <div className="card-body">
             <h1 className="text-3xl font-bold">Register Now!</h1>
             <form onSubmit={handleRegister} className="fieldset">
               {/* name  */}
               <label className="label">Name</label>
               <input
+                required
                 name="name"
                 type="text"
                 className="input"
@@ -87,6 +91,7 @@ function Register() {
               {/* name  */}
               <label className="label">Photo URL</label>
               <input
+                required
                 name="photourl"
                 type="text"
                 className="input"
@@ -95,6 +100,7 @@ function Register() {
               {/* email  */}
               <label className="label">Email</label>
               <input
+                required
                 name="email"
                 type="email"
                 className="input"

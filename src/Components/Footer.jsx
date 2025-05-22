@@ -6,6 +6,7 @@ import {
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
+  FaLeaf,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -14,7 +15,10 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 grid gap-8 md:grid-cols-3 text-sm">
         {/* Website Info */}
         <div>
-          <h2 className="text-2xl font-bold text-green-400 mb-3">Ninja User</h2>
+          <div className="flex items-center gap-2 mb-4">
+            <FaLeaf className="text-green-600 text-2xl" />
+            <h2 className="text-2xl font-bold text-green-400 mb-3">Ninja</h2>
+          </div>
           <p className="text-gray-300">
             Your trusted platform for plant lovers and care-takers. Grow with
             us!

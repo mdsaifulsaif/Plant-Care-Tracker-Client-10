@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../authProvider/authProvider";
+import { Helmet } from "react-helmet-async";
 
 const AddPlant = () => {
   const { user } = useContext(AuthContext);
@@ -39,8 +40,11 @@ const AddPlant = () => {
   return (
     <form
       onSubmit={handlePlant}
-      className="w-11/12 mx-auto bg-white grid grid-cols-1 md:grid-cols-2 gap-4 p-6  rounded-2xl shadow-md"
+      className="w-11/12 mt-5 mx-auto bg-white grid grid-cols-1 md:grid-cols-2 gap-4 p-6  rounded-2xl shadow-md"
     >
+      <Helmet>
+        <title>Ninja | Add Plant</title>
+      </Helmet>
       <h2 className="text-2xl font-bold col-span-full flex items-center gap-2 text-green-700 mb-4">
         <FaPlusCircle className="text-green-600" />
         Add New Plant

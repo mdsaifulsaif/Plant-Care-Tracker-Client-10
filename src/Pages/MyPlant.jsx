@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import {
   FaLeaf,
   FaListAlt,
@@ -47,7 +48,10 @@ const MyPlant = () => {
   };
 
   return (
-    <div className="p-4  w-11/12  mx-auto bg-green-50 rounded-lg shadow-md">
+    <div className="p-4 mt-5  w-11/12  mx-auto bg-green-50 rounded-lg shadow-md">
+      <Helmet>
+        <title>Ninja | My Plant</title>
+      </Helmet>
       <div className="flex items-center gap-2 mb-6">
         <FaLeaf className="text-green-600 text-2xl" />
         <h2 className="text-2xl font-bold text-green-800">My Plants</h2>
@@ -56,9 +60,13 @@ const MyPlant = () => {
       <div className="space-y-6">
         <div>
           {remaingplants.length === 0 ? (
-            <div className="text-center text-gray-500">
-              <h3 className="text-xl font-semibold">No Plants Found</h3>
-              <p className="mt-2">Please add some plants to your collection.</p>
+            <div className="min-h-[50vh] w-11/12  mx-auto flex items-center justify-center">
+              <div className="text-center text-gray-500 ">
+                <h3 className="text-xl font-semibold">No Plants Found</h3>
+                <p className="mt-2">
+                  Please add some plants to your collection.
+                </p>
+              </div>
             </div>
           ) : (
             <h3 className="text-lg font-semibold text-gray-700">

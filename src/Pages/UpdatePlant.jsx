@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { FaEdit, FaPlusCircle } from "react-icons/fa";
 import { useLoaderData, useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
@@ -53,6 +54,9 @@ const UpdatePlant = () => {
       onSubmit={handlePlantUPDATE}
       className="w-11/12 mx-auto bg-white grid grid-cols-1 md:grid-cols-2 gap-4 p-6 rounded-2xl shadow-md"
     >
+      <Helmet>
+        <title>Ninja | Update Plant</title>
+      </Helmet>
       <h2 className="text-2xl font-bold col-span-full flex items-center gap-2 text-green-700 mb-4">
         <FaEdit className="text-green-600" />
         Update Plant
