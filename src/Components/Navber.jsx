@@ -6,6 +6,7 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../authProvider/authProvider";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
+import Swal from "sweetalert2";
 
 function Navbar() {
   const { user, signOutUser } = useContext(AuthContext);
@@ -22,7 +23,14 @@ function Navbar() {
   }, [dark]);
 
   const handleLogOut = () => {
-    signOutUser().catch(console.log);
+    signOutUser().catch();
+    Swal.fire({
+      title: "LogOut successfully!",
+      icon: "success",
+      iconColor: "#008000",
+      confirmButtonColor: "#008000",
+      draggable: true,
+    });
   };
 
   const navItems = (
@@ -97,12 +105,20 @@ function Navbar() {
                 </div>
               </div>
             ) : (
-              <Link
-                to="/login"
-                className="bg-green-600 text-white px-3 py-2 rounded-sm"
-              >
-                Login
-              </Link>
+              <div className="flex items-center justify-center gap-2">
+                <Link
+                  to="/register"
+                  className="bg-green-600 text-white px-3 py-2 rounded-sm"
+                >
+                  Register
+                </Link>
+                <Link
+                  to="/login"
+                  className="bg-green-600 text-white px-3 py-2 rounded-sm"
+                >
+                  Login
+                </Link>
+              </div>
             )}
           </div>
 
@@ -158,12 +174,20 @@ function Navbar() {
               </div>
             </div>
           ) : (
-            <Link
-              to="/login"
-              className="bg-green-600 text-white px-3 py-2 rounded-sm"
-            >
-              Login
-            </Link>
+            <div className="flex items-center justify-center gap-2">
+              <Link
+                to="/register"
+                className="bg-green-600 text-white px-3 py-2 rounded-sm"
+              >
+                Register
+              </Link>
+              <Link
+                to="/login"
+                className="bg-green-600 text-white px-3 py-2 rounded-sm"
+              >
+                Login
+              </Link>
+            </div>
           )}
         </div>
       </div>

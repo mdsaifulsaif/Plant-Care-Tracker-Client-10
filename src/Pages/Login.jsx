@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, Navigate, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../authProvider/authProvider";
+
 import Swal from "sweetalert2";
 
 function Login() {
@@ -30,6 +31,13 @@ function Login() {
       .catch((error) => {
         const errom = error.message;
         setErrorMessage(errom);
+        Swal.fire({
+          title: errormassage,
+          icon: "error",
+          iconColor: "#FF0000",
+          confirmButtonColor: "#008000",
+          draggable: true,
+        });
       });
   };
 
