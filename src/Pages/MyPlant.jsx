@@ -94,10 +94,12 @@ const MyPlant = () => {
                 {plant.category || "N/A"}
               </div>
 
-              <div className="flex items-center gap-3 text-gray-700 text-justify">
-                <FaAlignLeft />
-                <span className="font-medium">Description:</span>{" "}
-                {plant.description}
+              <div className="flex flex-col items-start md:flex-row items-center gap-3 text-gray-700 text-justify">
+                <div className="flex items-center gap-3">
+                  <FaAlignLeft />
+                  <span className="font-medium">Description:</span>{" "}
+                </div>
+                <p>{plant.description}</p>
               </div>
 
               <div className="flex items-center gap-3 text-gray-700">

@@ -8,6 +8,7 @@ import {
   FaMapMarkerAlt,
   FaLeaf,
 } from "react-icons/fa";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -16,8 +17,10 @@ const Footer = () => {
         {/* Website Info */}
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <FaLeaf className="text-green-600 text-2xl" />
-            <h2 className="text-2xl font-bold text-green-400 mb-3">Ninja</h2>
+            <Link className="flex items-center justify-center gap-2" to="/">
+              <FaLeaf className="text-green-600 text-2xl" />
+              <h2 className="text-2xl font-bold text-green-400 mb-3">Ninja</h2>
+            </Link>
           </div>
           <p className="text-gray-300">
             Your trusted platform for plant lovers and care-takers. Grow with
@@ -46,13 +49,21 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
           <div className="flex gap-4 mt-2">
-            <a href="#" className="hover:text-green-400 transition">
+            <a
+              target="blank"
+              href="https://web.facebook.com/saiful.saif.801798"
+              className="hover:text-green-400 transition"
+            >
               <FaFacebookF size={20} />
             </a>
             <a href="#" className="hover:text-green-400 transition">
               <FaTwitter size={20} />
             </a>
-            <a href="#" className="hover:text-green-400 transition">
+            <a
+              target="blank"
+              href="https://www.instagram.com/aahil_ahmed__/?hl=en"
+              className="hover:text-green-400 transition"
+            >
               <FaInstagram size={20} />
             </a>
           </div>
@@ -61,7 +72,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="text-center text-gray-500 text-sm mt-10 border-t border-gray-700 pt-4">
-        © 2025 Ninja User. All rights reserved.
+        © 2025 Ninja . All rights reserved.
       </div>
     </footer>
   );

@@ -54,12 +54,14 @@ function Navbar() {
   );
 
   return (
-    <div className="w-full bg-gray-900 dark:bg-gray-900 shadow-md">
+    <div className="w-full bg-gray-900 py-2 sticky to-0 dark:bg-gray-900 shadow-md">
       <div className="container mx-auto px-4  flex justify-between items-center">
         {/* Left Side for All Devices */}
         <div className="flex items-center gap-2">
-          <FaLeaf className="text-green-600 text-2xl" />
-          <h1 className="font-bold text-xl  text-white">Ninja</h1>
+          <Link className="flex items-center justify-center gap-2" to="/">
+            <FaLeaf className="text-green-600 text-2xl" />
+            <h1 className="font-bold text-xl  text-white">Ninja</h1>
+          </Link>
         </div>
 
         {/* Mobile Menu Icon */}
@@ -88,7 +90,7 @@ function Navbar() {
                 <div className=" ">
                   <button
                     onClick={handleLogOut}
-                    className=" bg-green-600 text-white px-3 py-2 rounded-sm"
+                    className=" bg-green-600 text-white px-2 py-1 rounded-sm"
                   >
                     Logout
                   </button>

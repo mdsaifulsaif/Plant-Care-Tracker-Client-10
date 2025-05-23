@@ -10,7 +10,7 @@ function Login() {
   const location = useLocation();
 
   const { loginUser, googleLogin, setUser } = useContext(AuthContext);
-  const [errormassage, setErrorMessage] = useState(null);
+  const [errormassage, setErrorMessage] = useState();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -30,12 +30,6 @@ function Login() {
       .catch((error) => {
         const errom = error.message;
         setErrorMessage(errom);
-        Swal.fire({
-          icon: "error",
-          title: `${errom}`,
-          text: "Something went wrong!",
-          confirmButtonColor: "#008000",
-        });
       });
   };
 
@@ -54,12 +48,6 @@ function Login() {
       .catch((error) => {
         const errom = error.message;
         setErrorMessage(errom);
-        Swal.fire({
-          icon: "error",
-          title: `${errom}`,
-          text: "Something went wrong!",
-          confirmButtonColor: "#008000",
-        });
       });
   };
 
@@ -102,7 +90,7 @@ function Login() {
                 Register
               </Link>
             </p>
-            <p className="text-red-700 "></p>
+            <p className="text-red-700 ">{errormassage}</p>
           </form>
           <div className="mx-auto">
             <button
