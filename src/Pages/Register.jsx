@@ -30,11 +30,12 @@ function Register() {
       .then((res) => {
         const user = res.user;
         //  Update Firebase user profile with name and photo
-        updateProfile(user, {
+        const userupdate = updateProfile(user, {
           displayName: name,
           photoURL: photourl,
         });
-        setUser(user);
+
+        setUser({ ...user, displayName: name, photoURL: photourl });
         Swal.fire({
           title: "User Create successfully!",
           icon: "success",
