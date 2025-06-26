@@ -1,11 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaLeaf } from "react-icons/fa";
 import { Link, useLoaderData, useNavigate } from "react-router";
+import LoaddingSpinner from "../Components/LoaddingSpinner";
 
 function AllPlants() {
-  const data = useLoaderData();
-  const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  // const data = useLoaderData();
+  useEffect(() => {
+    fetch("https://mango-server-nine.vercel.app/plants")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch plants");
+        return res.json();
+      })
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+  // const navigate = useNavigate();
 
   const [sortBy, setSortBy] = useState("all");
 
@@ -29,8 +47,12 @@ function AllPlants() {
     return 0;
   });
 
+  if (loading) {
+    return <LoaddingSpinner></LoaddingSpinner>;
+  }
+
   return (
-    <section className="mt-5 p-4 w-11/12 mx-auto sm:p-6 bg-green-50 rounded-2xl shadow-md">
+    <section className="mt-27 mb-5 p-4 w-11/12 mx-auto sm:p-6 bg-green-50 rounded-2xl shadow-md">
       <Helmet>
         <title>Ninja | All Plants</title>
       </Helmet>

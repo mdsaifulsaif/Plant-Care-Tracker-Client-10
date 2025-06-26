@@ -60,7 +60,7 @@ function Slider() {
   );
 
   return (
-    <div className="px-4 py-5  max-w-6xl mx-auto">
+    <div className="px-4 py-5 mt-20 max-w-6xl mx-auto">
       <h2 className="text-2xl mt-5  font-bold text-green-700   flex items-center justify-center gap-2">
         <FaLeaf className="text-green-700" />
         Our Features

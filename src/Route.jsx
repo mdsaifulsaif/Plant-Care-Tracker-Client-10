@@ -11,6 +11,13 @@ import UpdatePlant from "./Pages/UpdatePlant";
 import PrivetRoute from "./PrivetRoute/PrivetRoute";
 import NotFound from "./Components/NotFound";
 import LoaddingSpinner from "./Components/LoaddingSpinner";
+import DashboardLayout from "./Pages/Dashboard/DashboardLayout";
+import DashHome from "./Pages/Dashboard/DashHome";
+import UserPlants from "./Pages/Dashboard/UserPlants";
+import About from "./Pages/About";
+import Support from "./Pages/Support";
+import DashboardAllPlants from "./Pages/Dashboard/DashboardAllPlants";
+import DashboardAddPlant from "./Pages/Dashboard/DashboardAddPlant";
 
 export const router = createBrowserRouter([
   {
@@ -36,8 +43,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/all-plants",
-        loader: () => fetch("https://mango-server-nine.vercel.app/plants"),
-        hydrateFallbackElement: <LoaddingSpinner></LoaddingSpinner>,
+
         Component: AllPlants,
       },
       {
@@ -74,6 +80,14 @@ export const router = createBrowserRouter([
         Component: UpdatePlant,
       },
       {
+        path: "/about",
+        Component: About,
+      },
+      {
+        path: "/support",
+        Component: Support,
+      },
+      {
         path: "/login",
         Component: Login,
       },
@@ -83,6 +97,34 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivetRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivetRoute>
+    ),
+    children: [
+      {
+        index: true,
+        path: "/dashboard",
+        Component: DashHome,
+      },
+      {
+        path: "/dashboard/yourplants",
+        Component: UserPlants,
+      },
+      {
+        path: "/dashboard/all-plants",
+        Component: DashboardAllPlants,
+      },
+      {
+        path: "/dashboard/add-plant",
+        Component: DashboardAddPlant,
+      },
+    ],
+  },
+
   {
     path: "*",
     Component: NotFound,

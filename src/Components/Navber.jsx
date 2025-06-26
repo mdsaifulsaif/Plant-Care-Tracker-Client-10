@@ -46,23 +46,42 @@ function Navbar() {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/add-plant" className="hover:text-green-600">
-          Add Plant
+        <NavLink to="/about" className="hover:text-green-600">
+          About
         </NavLink>
       </li>
       <li>
-        <NavLink
-          to={`/my-plants/${user?.email}`}
-          className="hover:text-green-600"
-        >
-          My Plants
+        <NavLink to="/support" className="hover:text-green-600">
+          Support
         </NavLink>
       </li>
+      {user?.email && (
+        <>
+          <li>
+            <NavLink to="/add-plant" className="hover:text-green-600">
+              Add Plant
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to={`/my-plants/${user?.email}`}
+              className="hover:text-green-600"
+            >
+              My Plants
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={`/dashboard`} className="hover:text-green-600">
+              Dashboard
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
   return (
-    <div className="w-full bg-gray-900 py-2 sticky to-0 dark:bg-gray-900 shadow-md">
+    <div className="w-full fixed top-0 left-0 z-50 bg-gray-900 py-2 dark:bg-gray-900 shadow-md">
       <div className="container mx-auto px-4  flex justify-between items-center">
         {/* Left Side for All Devices */}
         <div className="flex items-center gap-2">

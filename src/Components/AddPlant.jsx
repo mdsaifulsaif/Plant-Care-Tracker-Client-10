@@ -40,7 +40,7 @@ const AddPlant = () => {
   return (
     <form
       onSubmit={handlePlant}
-      className="w-11/12 mt-5 mx-auto bg-white grid grid-cols-1 md:grid-cols-2 gap-4 p-6  rounded-2xl shadow-md"
+      className="w-11/12 mt-30 mb-5 mx-auto bg-white grid grid-cols-1 md:grid-cols-2 gap-4 p-6  rounded-2xl shadow-md"
     >
       <Helmet>
         <title>Ninja | Add Plant</title>

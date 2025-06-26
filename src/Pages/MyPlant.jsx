@@ -49,7 +49,7 @@ const MyPlant = () => {
   };
 
   return (
-    <div className="p-4 mt-5  w-11/12  mx-auto bg-green-50 rounded-lg shadow-md">
+    <div className="p-4 mb-5 mt-27  w-11/12  mx-auto bg-green-50 rounded-lg shadow-md">
       <Suspense fallback={<LoaddingSpinner></LoaddingSpinner>}></Suspense>
       <Helmet>
         <title>Ninja | My Plant</title>
