@@ -11,7 +11,7 @@ const TopPlantCareMistakes = () => {
   ];
 
   return (
-    <section className="bg-green-50 p-6 rounded-2xl shadow-md my-8">
+    <section className="bg-green-50 p-6 rounded-2xl shadow-md my-5">
       <h2 className="text-2xl font-bold text-green-700 mb-4 flex items-center gap-2">
         <FaExclamationTriangle className="text-green-700" />
         Top Plant Care Mistakes

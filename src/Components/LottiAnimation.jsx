@@ -4,7 +4,7 @@ import plantAnimation from "../assets/Animation - 1747881597388.json";
 
 function LottiAnimation() {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center p-6 space-x-6">
+    <div className="flex  flex-col md:flex-row items-center justify-center p-6 space-x-6">
       {/* Left: Animation */}
       <div className="w-[320px] h-[320px]">
         <Lottie

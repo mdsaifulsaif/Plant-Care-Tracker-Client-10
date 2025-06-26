@@ -60,8 +60,8 @@ function Slider() {
   );
 
   return (
-    <div className="px-4 py-10 max-w-6xl mx-auto">
-      <h2 className="text-2xl  font-bold text-green-700 mb-6 flex items-center justify-center gap-2">
+    <div className="px-4 py-5  max-w-6xl mx-auto">
+      <h2 className="text-2xl mt-5  font-bold text-green-700   flex items-center justify-center gap-2">
         <FaLeaf className="text-green-700" />
         Our Features
       </h2>
@@ -69,7 +69,7 @@ function Slider() {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="keen-slider__slide  flex items-center md:h-[70vh] justify-center"
+            className="keen-slider__slide  flex items-center md:h-[55vh] justify-center"
           >
             <div className="bg-white  shadow-lg rounded-xl p-6 w-full h-48 flex flex-col items-center justify-center text-center hover:shadow-xl transition">
               <div className="text-green-600 mb-3">{slide.icon}</div>

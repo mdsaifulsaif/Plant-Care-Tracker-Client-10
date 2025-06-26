@@ -12,7 +12,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-10 mt-10">
+    <footer className="bg-gray-900 text-white py-10">
       <div className="max-w-6xl mx-auto px-4 grid gap-8 md:grid-cols-3 text-sm">
         {/* Website Info */}
         <div>
