@@ -21,7 +21,7 @@ const PlantCareLevelChart = ({ AllPlants }) => {
   }));
 
   return (
-    <div className="grid lg:grid-cols-2 gap-6 p-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
       {/* 👤 User Profile Section */}
       <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center justify-center text-center">
         <div className="relative mb-4">
@@ -40,12 +40,12 @@ const PlantCareLevelChart = ({ AllPlants }) => {
       </div>
 
       {/* 🧩 Care Level Pie Chart */}
-      <div className="bg-white p-4 rounded-xl shadow">
+      <div className="bg-white p-4 rounded-xl shadow flex flex-col items-center justify-center">
         <h2 className="text-xl font-bold text-green-700 mb-4 flex items-center gap-2">
           <FaChartPie /> Care Level Distribution
         </h2>
         {pieData.length > 0 ? (
-          <PieChart width={350} height={300}>
+          <PieChart width={300} height={300}>
             <Pie
               data={pieData}
               cx="50%"

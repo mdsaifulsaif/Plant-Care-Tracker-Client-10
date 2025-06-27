@@ -48,7 +48,7 @@ function DashHome() {
     return <LoaddingSpinner></LoaddingSpinner>;
   }
   return (
-    <div>
+    <div className="">
       <section className="p-6 bg-green-50 rounded-2xl shadow-md">
         <h1 className="text-2xl font-bold text-green-800 mb-4">
           Welcome to Your Dashboard

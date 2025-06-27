@@ -81,12 +81,12 @@ function Navbar() {
   );
 
   return (
-    <div className="w-full fixed top-0 left-0 z-50 bg-gray-900 py-2 dark:bg-gray-900 shadow-md">
+    <div className="w-full fixed top-0 left-0 z-50 bg-green-700 py-2  shadow-md">
       <div className="container mx-auto px-4  flex justify-between items-center">
         {/* Left Side for All Devices */}
         <div className="flex items-center gap-2">
           <Link className="flex items-center justify-center gap-2" to="/">
-            <FaLeaf className="text-green-600 text-2xl" />
+            <FaLeaf className="text-white text-2xl" />
             <h1 className="font-bold text-xl  text-white">Ninja</h1>
           </Link>
         </div>

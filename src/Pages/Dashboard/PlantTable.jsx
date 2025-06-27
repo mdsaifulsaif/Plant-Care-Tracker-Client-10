@@ -3,9 +3,9 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 
 const PlantTable = ({ Plants }) => {
   return (
-    <div className="overflow-x-auto bg-white rounded-xl shadow p-4">
+    <div className=" bg-white rounded-xl  shadow p-4">
       <h2 className="text-xl font-bold text-green-700 mb-4">Plant Summary</h2>
-      <table className="w-full table-auto border border-gray-200">
+      <table className=" table-auto border border-gray-200">
         <thead className="bg-green-600 text-white">
           <tr>
             <th className="p-2 text-left">#</th>

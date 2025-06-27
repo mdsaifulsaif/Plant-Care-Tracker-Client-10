@@ -12,14 +12,14 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-10">
+    <footer className="bg-green-700 text-white py-10">
       <div className="max-w-6xl mx-auto px-4 grid gap-8 md:grid-cols-3 text-sm">
         {/* Website Info */}
         <div>
           <div className="flex items-center gap-2 mb-4">
             <Link className="flex items-center justify-center gap-2" to="/">
-              <FaLeaf className="text-green-600 text-2xl" />
-              <h2 className="text-2xl font-bold text-green-400 mb-3">Ninja</h2>
+              <FaLeaf className="text-white text-2xl" />
+              <h2 className="text-2xl font-bold text-white mb-3">Ninja</h2>
             </Link>
           </div>
           <p className="text-gray-300">
@@ -32,15 +32,15 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
           <div className="flex items-center gap-2 text-gray-300 mb-1">
-            <FaEnvelope className="text-green-400" />
+            <FaEnvelope className="text-white" />
             <span>support@ninjauser.com</span>
           </div>
           <div className="flex items-center gap-2 text-gray-300 mb-1">
-            <FaPhone className="text-green-400" />
+            <FaPhone className="text-white" />
             <span>+1 (234) 567-8901</span>
           </div>
           <div className="flex items-center gap-2 text-gray-300">
-            <FaMapMarkerAlt className="text-green-400" />
+            <FaMapMarkerAlt className="text-white" />
             <span>123 Plant Lane, Green City</span>
           </div>
         </div>
@@ -48,7 +48,7 @@ const Footer = () => {
         {/* Social Media Links */}
         <div>
           <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
-          <div className="flex gap-4 mt-2">
+          <div className="flex gap-4  mt-2">
             <a
               target="blank"
               href="https://web.facebook.com/saiful.saif.801798"
